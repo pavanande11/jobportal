@@ -1,0 +1,133 @@
+.container{
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+.header{
+  height: 70px;
+  background-color: aquamarine;
+  width: 100%;
+}
+.header .icon{
+  height: 40px;
+  padding-top:10px;
+  width: 40px;
+  position:relative;
+  float: left;
+}
+.header .icontext{
+  font-size:30px;
+  font-weight: bolder;
+  position: relative;
+  float:left;
+  padding-top:15px;
+  margin-left:5px;
+  color: green;
+}
+.icontext span{
+  color: red;
+}
+.header .signicon{
+  width: 40px;
+  height: 40px;
+  float: right;
+  padding-top:10px;
+  margin-right: 10px;
+}
+.signicon:hover{
+  cursor: pointer;
+}
+.header .signtext{
+  font-size: 20px;
+  float: right;
+  padding-top:15px;
+  margin-right:10px;
+}
+.signtext:hover{
+  color: brown;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.footer{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background-color: cadetblue;
+}
+.footer .foottext{
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+.footer .socialicon{
+  width:30px;
+  height: 30px;
+  padding-top: 5px;
+  float:right;
+  margin-right: 5px;
+}
+.content{
+  height: calc(100% - 110px);
+  width: 100%;
+}
+.content .text1{
+font-size: 42px;
+color: cornflowerblue;
+text-transform: uppercase;
+}
+.content .text2{
+  font-size:36px;
+  color: darkgreen;
+  text-transform: capitalize;
+}
+.content .text3{
+font-size: 24px;
+color: indianred;
+}
+.content .searchbar{
+  display:block;
+  position: relative;
+  top:45px;
+  margin-left:10px;
+  height:60px;
+  width: 750px;
+}
+.searchbar .searchskill{
+    padding: 10px;
+    width: 250px;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+    border-right: 1px solid lightgrey;
+    font-size: 20px; 
+    background: url('searchicon.png') no-repeat left;
+    padding-left: 50px;
+}
+.searchbar .searchloc{
+  padding: 10px;
+  width: 250px;
+  border: none;
+  height: 40px;
+  border-radius: 5px;
+  border-right: 1px solid lightgrey;
+  font-size: 20px; 
+  background: url('location.png') no-repeat left;
+  background-size: 30px;
+  padding-left: 50px;
+}
+.searchbar .searchbtn{
+  padding: 5px;
+  width: 125px;
+  border: none;
+  height: 60px;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  font-size: 20px; 
+  cursor: pointer;
+  border: none;
+
+}
