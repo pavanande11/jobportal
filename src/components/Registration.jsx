@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Registration.css";
 import axios from "axios";
 const Registration = () => {
@@ -16,6 +16,7 @@ const Registration = () => {
   // State hook for validation messages
   const [passwordError, setPasswordError] = useState("");
   const [serverError,setServerError] = useState("")
+  const navigate = useNavigate();
  
   // Handle input changes
   const handleChange = (e) => {
@@ -35,7 +36,7 @@ const Registration = () => {
       try {
         //Send the data to the API
         const response = await axios.post(
-          "http://localhost:8081/user/register",
+          "http://localhost:8081/api/auth/register",
           formData,
           {
             headers:{
@@ -44,9 +45,10 @@ const Registration = () => {
           }
         )
         console.log(response.data)
-        alert(response.data);
+        alert(response.data.message);
+        navigate('/login')
       } catch (error) {
-        console.log("Error during Registration",error)
+        console.log("Error during Registration",error.response.data.message)
         
         if(error.response){
           setServerError(error.response.data.message || "Something went wrong")

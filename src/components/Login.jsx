@@ -9,7 +9,7 @@ function Login() {
   const [user, setUser] = useState({ email: "", password: "" })
   const navigate = useNavigate();
   const [error, setError] = useState('');
-
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (error) {
@@ -26,10 +26,11 @@ function Login() {
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true);
     try {
-      const response = axios.post('http://localhost:8081/api/auth/login', user, {
+      const response = await axios.post('http://localhost:8081/api/auth/login', user, {
         headers: {
           "Content-Type": "application/json",
         }
@@ -39,7 +40,10 @@ function Login() {
       setItemWithExpiry('token',token,1000*60*60*24)
       navigate('/dashboard')
     } catch (err) {
-      setError(err.response.data.message)
+      setError(err.response?.data?.message || "An error occurred. Please try again.");
+    }
+    finally{
+      setLoading(false)
     }
   }
   return (
@@ -47,7 +51,7 @@ function Login() {
       <div className="formcontainer">
         <header>Login Page</header>
         <div>
-          {error && <div style={{color:'red',fontSize:'10px'}}>{error}</div>}
+          {error && <div style={{ color: 'red', fontSize: '25px' }}>{error}</div>}
         </div>
         <form onSubmit={handleSubmit}>
           <div className="input-field">
@@ -62,13 +66,15 @@ function Login() {
           </div>
           <div className="button">
             <div className="inner">
-              <button>Login</button>
+            <button type="submit" disabled={loading}>
+                {loading ? 'Logging in...' : 'Login'}
+              </button>
             </div>
           </div>
         </form>
         <div className="forget">
           <Link
-            to="#"
+            to="/forgetpassword"
             style={{
               textDecoration: "none",
               color: "darkcyan",
@@ -87,7 +93,8 @@ function Login() {
               color: "darkcyan",
               fontWeight: "600",
             }}
-          >Sign Up
+          >
+            Sign Up
           </Link>
         </div>
       </div>
