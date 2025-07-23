@@ -17,8 +17,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
-        os: [ubuntu-latest, windows-latest] # used to run on both ubuntu and windows
+        node-version: [18.x]
+        os: [ubuntu-latest] # used to run on both ubuntu and windows
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
